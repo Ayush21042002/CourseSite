@@ -22,7 +22,7 @@
       <p class="camp-seats">{{course.rating}}</p>
     </div>
     <div class="url" *ngIf="course.url">
-      <button mat-raised-button class="url-button"><a target="_blank" class="camp-url" href="{{course.url}}">Go To Camp</a></button>
+      <button mat-raised-button class="url-button"><a target="_blank" class="camp-url" href="{{course.url}}">Go To Course</a></button>
     </div>
     <button type="submit" *ngIf="adminIsAuthenticated" (click)="onDelete(course.id)" mat-raised-button>DELETE</button>
     <button type="submit" *ngIf="adminIsAuthenticated"  [routerLink]="['/edit',course.id]" mat-raised-button>EDIT</button>
@@ -31,8 +31,8 @@
 <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   (page)="onChangedPage($event)" *ngIf="courses.length >= 0">
 </mat-paginator>
-<span *ngIf="courses.length<=0">This Page has no camps to display!!</span>
+<span *ngIf="courses.length<=0">This Page has no courses to display!!</span>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
 <button mat-raised-button *ngIf="adminIsAuthenticated" [routerLink]="['/admin/signup']">Add NEW ADMIN</button><br><br><br>
-<button mat-raised-button *ngIf="adminIsAuthenticated" [routerLink]="['/admin/course/create']">Add A CAMP</button>
+<button mat-raised-button *ngIf="adminIsAuthenticated" [routerLink]="['/admin/course/create']">Add A Course</button>
