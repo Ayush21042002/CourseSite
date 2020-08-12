@@ -1,6 +1,6 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
-import { Camp } from '../../../models/camp.model';
-import { CampService }  from '../../../services/camp.service';
+import { Course } from '../../../models/course.model';
+import { CourseService }  from '../../../services/course.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 import { AuthAdminService } from 'src/app/services/auth-admin.service';
@@ -20,31 +20,28 @@ export class CampListComponent implements OnInit,OnDestroy {
   pageSizeOptions: number[] = [1, 2, 5, 10];
   currPage: number = 1;
 
-
-
-  camps: Camp[] = [];
+  courses: Course[] = [];
   private _subscribe: Subscription;
   isLoading: boolean = true;
 
   private authAdminStatusSubs: Subscription;
-  userIsAuthenticated: boolean = false;
   adminIsAuthenticated: boolean = false;
 
 
   constructor(
-    private _campService: CampService,
+    private _courseService: CourseService,
     private _authAdminService: AuthAdminService,
     private _router: Router,
   ) { }
 
   ngOnInit(): void {
     this.loggedInAdmin = this._authAdminService.getCurrentAdmin();
-    this._campService.getCamps(this.pageSize, this.currPage);
-    this._subscribe = this._campService.getCampUpdateListener().subscribe((retreivedCampData: { camps: Camp[], campCount: number }) => {
+    this._courseService.getCourses(this.pageSize, this.currPage);
+    this._subscribe = this._courseService.getCourseUpdateListener().subscribe((retreivedCourseData: { courses: Course[], courseCount: number }) => {
       //console.log(retreivedPostData)
       this.isLoading = false;
-      this.length = retreivedCampData.campCount;
-      this.camps = retreivedCampData.camps;//not immediately updating
+      this.length = retreivedCourseData.courseCount;
+      this.courses = retreivedCourseData.courses;//not immediately updating
 
 
     })
@@ -56,8 +53,8 @@ export class CampListComponent implements OnInit,OnDestroy {
   }
 
   onDelete(id: string) {
-    this._campService.deleteCamp(id).subscribe(() => {
-      this._campService.getCamps(this.pageSize, this.currPage);
+    this._courseService.deleteCourse(id).subscribe(() => {
+      this._courseService.getCourses(this.pageSize, this.currPage);
     }, err => { });
   }
 
@@ -65,7 +62,7 @@ export class CampListComponent implements OnInit,OnDestroy {
     this.isLoading = true;
     this.pageSize = pageData.pageSize;
     this.currPage = pageData.pageIndex + 1;
-    this._campService.getCamps(this.pageSize, this.currPage);
+    this._courseService.getCourses(this.pageSize, this.currPage);
 
   }
 

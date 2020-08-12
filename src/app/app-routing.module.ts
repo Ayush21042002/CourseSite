@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'admin/signup', component: AdminSignupComponent, canActivate: [AuthAdminGuard] },
   { path: 'edit/:id', component: CampCreateComponent, canActivate: [AuthAdminGuard] },
   { path: 'admin/course/create', component: CampCreateComponent, canActivate: [AuthAdminGuard]},
-  { path: 'contribute', component: CampCreateComponent,},
 ];
 
 @NgModule({

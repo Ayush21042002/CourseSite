@@ -22,6 +22,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS }  from '@angular/common/http';
 import { AuthAdminInterceptor } from './components/admin-area/admin-auth/auth-admin-interceptor';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NavComponent } from './components/nav/nav.component';
     MatPaginatorModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthAdminInterceptor, multi: true },
