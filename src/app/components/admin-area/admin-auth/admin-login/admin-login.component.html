@@ -1,0 +1,34 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Admin Login</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form" #loginForm="ngForm" autocomplete="off">
+      <!-- <pre>{{loginForm.value | json}}</pre> -->
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input name="email" type="email" ngModel #emailInput="ngModel" matInput required email>
+
+        <mat-error>
+          <span *ngIf="emailInput.invalid">Enter valid E-mail.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" ngModel name="password" #passwordInput="ngModel" matInput required>
+        <mat-error>
+          <span *ngIf="passwordInput.invalid">Enter Valid Password.</span>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onLogin(loginForm)" mat-raised-button color="primary">Login</button>
+    <a routerLink="/admin/signup" mat-raised-button color="primary">New User? </a>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </mat-card-actions>
+</mat-card>

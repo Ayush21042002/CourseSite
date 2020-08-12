@@ -1,0 +1,35 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<mat-card class="example-card" *ngIf="!isLoading">
+  <mat-card-header>
+    <mat-card-title>Enter the Details to Sign Up.</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form" #signupForm="ngForm" anutocomplete="off">
+      <!-- <pre>{{loginForm.value | json}}</pre> -->
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input name="email" type="email" ngModel #emailInput="ngModel" matInput required email>
+
+        <mat-error>
+          <span *ngIf="emailInput.invalid">Enter valid E-mail.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" ngModel name="password" #passwordInput="ngModel" matInput required>
+        <mat-error>
+          <span *ngIf="passwordInput.invalid">Enter Valid Password.</span>
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button *ngIf="!isLoading" (click)="onSubmit(signupForm)" mat-raised-button color="primary">Submit</button>
+
+    <!-- <a mat-raised-button color="primary">Forgot Password ? </a> -->
+  </mat-card-actions>
+</mat-card>

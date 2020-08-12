@@ -1,0 +1,38 @@
+<mat-accordion multi="true" *ngIf="camps.length > 0 && !isLoading">
+
+  <mat-expansion-panel *ngFor="let camp of camps">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="camp-title"> <h1>{{ camp.title }}</h1></span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="camp-image">
+      <img [src]="camp.imagePath" [alt]="camp.title">
+    </div>
+    <div class="panel-content">
+      <h2>Description</h2>
+      <p class="camp-description">{{ camp.description }}</p>
+    </div>
+    <div class="field">
+      <h2>Field:</h2>
+      <p class="camp-field">{{camp.field}}</p>
+    </div>
+    <div class="seats" *ngIf="camp.rating">
+      <h2>Rating</h2>
+      <p class="camp-seats">{{camp.rating}}</p>
+    </div>
+    <div class="url">
+      <button mat-raised-button class="url-button"><a target="_blank" class="camp-url" href="{{camp.url}}">Go To Camp</a></button>
+    </div>
+    <button type="submit" *ngIf="adminIsAuthenticated" (click)="onDelete(camp.id)" mat-raised-button>DELETE</button>
+    <button type="submit" *ngIf="adminIsAuthenticated"  [routerLink]="['/edit',camp.id]" mat-raised-button>EDIT</button>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  (page)="onChangedPage($event)" *ngIf="camps.length >= 0">
+</mat-paginator>
+<span *ngIf="camps.length<=0">This Page has no camps to display!!</span>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<button mat-raised-button *ngIf="adminIsAuthenticated" [routerLink]="['/admin/signup']">Add NEW ADMIN</button><br><br><br>
+<button mat-raised-button *ngIf="adminIsAuthenticated" [routerLink]="['/admin/course/create']">Add A CAMP</button>

@@ -1,0 +1,39 @@
+*{
+  text-transform: capitalize;
+}
+
+
+.example-card {
+   margin-left: 30px;
+    margin-top: 2rem !important;
+    background-color: whitesmoke;
+  }
+
+  /* .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  } */
+  .example-form {
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  mat-spinner{
+    margin: 0 auto;
+  }
+
+  input[type="file"]{
+    visibility: hidden;
+  }
+
+  .image-preview{
+    height: 5rem;
+    margin: 1rem 0;
+  }
+
+  .image-preview img {
+    height: 100%;
+  }

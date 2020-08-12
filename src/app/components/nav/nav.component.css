@@ -1,0 +1,16 @@
+ul li a{
+  color: white;
+  text-decoration: none;
+}
+ul li a:hover{
+  color: aqua;
+  text-decoration: underline;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+mat-toolbar {
+  border: solid white 3px;
+}

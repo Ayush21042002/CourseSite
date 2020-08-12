@@ -1,0 +1,56 @@
+<!-- {{postForm.value|json}} -->
+<!-- {{dataLoaded}} -->
+<mat-spinner *ngIf="!dataLoaded"></mat-spinner>
+<mat-card class="example-card" *ngIf="dataLoaded && isAuthenticated">
+  <mat-card-header>
+    <mat-card-title>Create Camp</mat-card-title>
+    <mat-card-subtitle>Fill the template to create new camp.</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form" autocomplete="off" [formGroup]="campForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput>
+        <mat-error>
+          <span *ngIf="campForm.controls.title.errors?.required">This field is mandatory.</span>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button type="button" mat-stroked-button (click)="filePicker.click()">Add Image</button>
+        <input type="file" #filePicker (change)="onImagePicked($event)">
+        <div class="image-preview" *ngIf="imagePreview != '' && imagePreview && campForm.get('image').valid">
+          <img [alt]="campForm.value.title" [src]="imagePreview">
+        </div>
+      </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea COLS="30" ROWS="5" WRAP="HARD" formControlName="description" matInput></textarea>
+        <mat-error>
+          <span *ngIf="campForm.controls.description.errors?.required">This field is mandatory.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Rating</mat-label>
+        <input formControlName="rating" matInput placeholder="0">
+        <mat-error>
+          <span *ngIf="campForm.controls.rating.errors?.required">This field is mandatory.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Field</mat-label>
+        <input formControlName="field" matInput>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>URL</mat-label>
+        <input formControlName="url" matInput>
+      </mat-form-field>
+    </form>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onFormSubmit()">Submit</button>
+    <a mat-raised-button color="primary" routerLink="/">Cancel</a>
+  </mat-card-actions>
+</mat-card>
+

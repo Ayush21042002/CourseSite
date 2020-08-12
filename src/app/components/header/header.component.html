@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="navbar">
+  <!-- <div>
+    <span> <img id="icon" src="../../assets/icons8-new-letter-100.png" alt="Post App"></span>
+
+  </div> -->
+  <div class="Name">
+    <a routerLink="/" class="title">COURSE SITE</a>
+  </div>
+
+  <div>
+    <span *ngIf="!adminAuthenticated && !userAuthenticated"><a mat-button routerLink="/admin/login" routerLinkActive="mat-accent"
+        class="nav-link">Admin Login</a></span>
+    <span *ngIf="adminAuthenticated"><a mat-button (click)="onAdminLogout()" class="nav-link">Logout </a></span>
+  </div>
+</mat-toolbar>

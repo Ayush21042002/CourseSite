@@ -1,0 +1,26 @@
+.navbar {
+    justify-content: space-between;
+}
+
+span {
+    padding-right: 1rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+mat-toolbar {
+    height: 50px !important;
+}
+
+#icon{
+    height:60px;
+    width: 70px;
+
+}
+
+.Name {
+  margin: auto;
+}
